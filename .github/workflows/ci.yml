@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pandoc_info:
+    name: Pandoc version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+      - name: Show versions
+        run: |
+          pandoc --version
+
+  build_html:
+    name: Build HTML example
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+      - name: Build HTML
+        working-directory: exemplos/relatorio-simples
+        run: |
+          make html
+      - name: Upload HTML artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-html
+          path: exemplos/relatorio-simples/build/relatorio.html
+
+  build_pdf_manual:
+    if: github.event_name == 'workflow_dispatch'
+    name: Build PDF example (manual)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install pandoc and TeX Live (XeLaTeX)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-lang-european
+      - name: Build PDF
+        working-directory: exemplos/relatorio-simples
+        run: |
+          make pdf
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-pdf
+          path: exemplos/relatorio-simples/build/relatorio.pdf
+
