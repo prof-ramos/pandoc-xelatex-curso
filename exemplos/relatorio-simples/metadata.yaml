@@ -1,0 +1,13 @@
+title: "Relatório de Exemplo"
+author: "Estudante Pandoc"
+lang: pt-BR
+date: today
+
+# Estilo
+mainfont: "Helvetica Neue"
+monofont: "Menlo"
+colorlinks: true
+linkcolor: MidnightBlue
+geometry: margin=2.5cm
+number-sections: true
+

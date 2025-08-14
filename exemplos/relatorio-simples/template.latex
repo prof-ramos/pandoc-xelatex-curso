@@ -1,0 +1,64 @@
+% Template LaTeX mínimo para Pandoc + XeLaTeX
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{portuguese}
+
+% Variáveis do Pandoc
+$if(mainfont)$\setmainfont{$mainfont$}$endif$
+$if(sansfont)$\setsansfont{$sansfont$}$endif$
+$if(monofont)$\setmonofont{$monofont$}$endif$
+
+$if(geometry)$
+  \geometry{$geometry$}
+$else$
+  \geometry{margin=2.5cm}
+$endif$
+
+% Links
+$if(colorlinks)$
+  \hypersetup{colorlinks=true, linkcolor=$if(linkcolor)$$linkcolor$$else$blue$endif$, urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$}
+$else$
+  \hypersetup{hidelinks}
+$endif$
+
+% Cabeçalho/Rodapé
+\pagestyle{fancy}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot{}
+
+% Compatibilidade com listas geradas pelo Pandoc
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Aparência das seções (usar padrão do LaTeX para evitar pacotes extras)
+
+% Título
+\title{$title$}
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{$if(date)$$date$$else$\today$endif$}
+
+\begin{document}
+\maketitle
+
+$if(toc)$
+  {\hypersetup{linkcolor=black}\tableofcontents}
+  \vspace{1em}
+$endif$
+
+% Compatibilidade adicional com macros do Pandoc
+\providecommand{\pandocbounded}[1]{#1}
+
+$body$
+
+\end{document}
