@@ -1,5 +1,7 @@
 # Curso: Produção de PDFs Bonitos com Pandoc + XeLaTeX (macOS)
 
+[![CI](https://github.com/prof-ramos/pandoc-xelatex-curso/actions/workflows/ci.yml/badge.svg)](https://github.com/prof-ramos/pandoc-xelatex-curso/actions/workflows/ci.yml)
+
 Este curso em Markdown ensina, passo a passo, a gerar PDFs elegantes a partir de Markdown usando Pandoc com o engine XeLaTeX no macOS. Foi pensado para um MacBook Air M3 com 8GB de RAM, priorizando leveza e comandos confiáveis.
 
 ## O que você vai aprender
