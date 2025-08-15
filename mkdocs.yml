@@ -1,0 +1,68 @@
+site_name: Curso Pandoc + XeLaTeX
+site_description: Produção de PDFs Bonitos com Pandoc + XeLaTeX no macOS
+site_url: https://prof-ramos.github.io/pandoc-xelatex-curso/
+repo_url: https://github.com/prof-ramos/pandoc-xelatex-curso
+repo_name: prof-ramos/pandoc-xelatex-curso
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Alternar para modo escuro
+    - scheme: slate
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Alternar para modo claro
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - content.code.select
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Curso:
+    - 1. Instalação: curso/01-instalacao.md
+    - 2. Primeira Conversão: curso/02-primeira-conversao.md
+    - 3. Fontes e Idioma: curso/03-fontes-e-idioma.md
+    - 4. Figuras, Tabelas e Códigos: curso/04-figuras-tabelas-codigos.md
+    - 5. Citações e Bibliografia: curso/05-citacoes-e-bibliografia.md
+    - 6. Templates e Estilo: curso/06-templates-e-estilo.md
+    - 7. Automação com Makefile: curso/07-automacao-makefile.md
+    - 8. Troubleshooting: curso/08-troubleshooting.md
+    - 9. Formatos Adicionais: curso/09-formatos-adicionais.md
+  - Exemplos:
+    - Relatório Simples: exemplos/relatorio-simples.md
+
+plugins:
+  - search:
+      lang: pt
+  - awesome-pages
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/prof-ramos/pandoc-xelatex-curso
